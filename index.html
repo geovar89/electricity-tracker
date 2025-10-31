@@ -1,12 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="el">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Electricity Tracker</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electricity Tracker</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>📊 Παρακολούθηση Κατανάλωσης Ρεύματος</h1>
+
+  <div class="tabs">
+    <button class="tab-button active" data-tab="data">Δεδομένα</button>
+    <button class="tab-button" data-tab="charts">Γραφήματα</button>
+  </div>
+
+  <div id="data" class="tab-content active">
+    <h2>Προσθήκη νέου μήνα</h2>
+    <input type="text" id="month" placeholder="Μήνας (π.χ. 25-Oct)">
+    <input type="number" id="consumption" placeholder="Κατανάλωση">
+    <input type="number" id="cost" placeholder="Κόστος (€)">
+    <input type="text" id="provider" placeholder="Πάροχος">
+    <button id="add-entry">Προσθήκη</button>
+
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>Μήνας</th>
+          <th>Κατανάλωση (kWh)</th>
+          <th>Κόστος (€)</th>
+          <th>Πάροχος</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div id="charts" class="tab-content">
+    <div class="filters">
+      <select id="filter-year"><option>Όλα</option></select>
+      <select id="filter-month"><option>Όλοι</option></select>
+      <select id="filter-provider"><option>Όλοι</option></select>
+    </div>
+    <canvas id="consumptionChart"></canvas>
+    <canvas id="costChart"></canvas>
+  </div>
+
+<script src="js/app.js"></script>
+</body>
 </html>
